@@ -57,18 +57,18 @@ function love.update(dt)
   if etat == "jeu" then
     --pad de gauche
     if love.keyboard.isDown("q") and pad.y + pad.hauteur < love.graphics.getHeight() then
-      pad.y = pad.y + vitesse_pad
+      pad.y = pad.y + vitesse_pad * dt
     end
     if love.keyboard.isDown("a") and pad.y >= 0 then
-      pad.y = pad.y - vitesse_pad
+      pad.y = pad.y - vitesse_pad * dt
     end
     
     --pad de droite
     if love.keyboard.isDown("down") and pad2.y + pad2.hauteur < love.graphics.getHeight() then
-      pad2.y = pad2.y + vitesse_pad
+      pad2.y = pad2.y + vitesse_pad * dt 
     end
     if love.keyboard.isDown("up") and pad2.y >= 0 then
-      pad2.y = pad2.y - vitesse_pad
+      pad2.y = pad2.y - vitesse_pad * dt
     end
     
     for n=#listeTrail,1,-1 do
@@ -92,8 +92,8 @@ function love.update(dt)
     --maTrainee.b   = math.random()
     table.insert(listeTrail, maTrainee)
     
-    balle.x = balle.x + balle.vitesse_x
-    balle.y = balle.y + balle.vitesse_y
+    balle.x = balle.x + balle.vitesse_x * dt
+    balle.y = balle.y + balle.vitesse_y * dt
     
     -- rebond sur les murs
     if balle.x < 0 then
